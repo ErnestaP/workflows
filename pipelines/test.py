@@ -25,14 +25,14 @@ path_of_ftp_resources_test_yaml = get_ftp_resources_yaml_path('ftp_resources_dev
         PresetDefinition.from_files(
             "prod",
             config_files=[
-               file_relative_path(__file__, path_of_ftp_resources_yaml)
+                path_of_ftp_resources_yaml
             ],
             mode="prod",
         ),
         PresetDefinition.from_files(
             "dev",
             config_files=[
-                file_relative_path(__file__, '../resources/ftp_resources_dev.yaml')
+                path_of_ftp_resources_test_yaml
             ],
             mode="dev",
         ),
