@@ -1,13 +1,15 @@
 from dagster import solid
-import ftplib
+import ftputil
+
+from utils.ftp_connection import ftp_session_factory
 
 
 @solid(required_resource_keys={"ftp"})
-def connect_to_ftp_server(context) -> ftplib.FTP:
+def connect_to_ftp_server(context) -> ftputil.FTPHost:
     parameters = context.resources.ftp.values()
-    ftp = ftplib.FTP(*parameters)
-    ftp.encoding = "utf-8"
-    return ftp
+    ftp_host = ftputil.FTPHost(*parameters, session_factory = ftp_session_factory)
+    ftp_host.use_list_a_option = False
 
+    context.log.info('FTP connection established.')
 
-
+    return ftp_host

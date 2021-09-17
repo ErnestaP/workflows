@@ -1,2 +1,15 @@
 __pycache__/
 .idea
+__pycache__/
+.idea
+.python-version
+poetry.lock
+pyproject.toml
+pyvenv.cfg
+lib/
+bin/
+doc/
+include/
+downloaded/
+*dummy*
+./resources/ftp_resources.yaml

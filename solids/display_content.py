@@ -1,8 +1,9 @@
-from dagster import solid, InputDefinition
-from dagster_types import FTPDagsterType
+from dagster import solid, InputDefinition, Any
 
 
-@solid(input_defs=[InputDefinition(name="ftp", dagster_type=FTPDagsterType)])
-def display_content(context, ftp):
-    context.log.info(str(ftp.dir()))
-
+@solid(
+    input_defs=[
+        InputDefinition(name='collected_files', dagster_type=Any)
+        ])
+def display_content(context, collected_files):
+    context.log.info(f'Collected file for download: {str(collected_files)}')

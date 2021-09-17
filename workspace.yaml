@@ -1,0 +1,5 @@
+load_from:
+  - python_file:
+      relative_path: repositories/repository.py
+      location_name: workflows
+      executable_path : /Users/ernesta/PycharmProjects/workflows/workflows/bin/python
