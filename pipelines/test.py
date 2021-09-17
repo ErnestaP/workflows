@@ -1,7 +1,6 @@
 from dagster import pipeline, PresetDefinition, execute_pipeline, ModeDefinition, file_relative_path
 
 from solids.connect_to_ftp_server import connect_to_ftp_server
-from solids.display_content import display_content
 from solids.collect_files_to_download import collect_files_to_download
 from solids.create_dummy_dir import create_dummy_dir
 from solids.dowloanda_file_from_ftp import  download_a_file_from_ftp
@@ -45,7 +44,7 @@ def test():
     ftp = connect_to_ftp_server()
     # for testing reasons
     start = create_dummy_dir(ftp)
-    collected_files = collect_files_to_download(start, ftp)
+    collected_files = collect_files_to_download(ftp, start)
     collected_files.map(download_a_file_from_ftp)
 
 
