@@ -4,3 +4,4 @@ resources:
       ftp_host : ""
       ftp_user : ""
       ftp_pass : ""
+      ftp_folder: ""
