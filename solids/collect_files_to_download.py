@@ -1,12 +1,13 @@
 import os
-from dagster import solid, InputDefinition, DynamicOutputDefinition, DynamicOutput
+from dagster import solid, InputDefinition, DynamicOutputDefinition, DynamicOutput, Nothing
 from dagster_types import FTPDagsterType
 
 
 from utils.generators import generate_mapping_key
 
 
-@solid(input_defs=[InputDefinition(name='ftp', dagster_type=FTPDagsterType)],
+@solid(input_defs=[InputDefinition(name='ftp', dagster_type=FTPDagsterType),
+                   InputDefinition("start", Nothing)],
        output_defs=[DynamicOutputDefinition(dict)])
 def collect_files_to_download(context, ftp) -> list:
     """

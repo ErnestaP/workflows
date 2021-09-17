@@ -44,8 +44,8 @@ path_of_ftp_resources_test_yaml = get_ftp_resources_yaml_path('ftp_resources_dev
 def test():
     ftp = connect_to_ftp_server()
     # for testing reasons
-    create_dummy_dir(ftp)
-    collected_files = collect_files_to_download(ftp)
+    start = create_dummy_dir(ftp)
+    collected_files = collect_files_to_download(start, ftp)
     collected_files.map(download_a_file_from_ftp)
 
 
