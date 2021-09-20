@@ -1,5 +1,5 @@
 import os
-
+import boto3
 
 def get_ftp_resources_yaml_path(file_name):
     path_parts = __file__.split('/')
@@ -7,3 +7,4 @@ def get_ftp_resources_yaml_path(file_name):
     sub_path_of_ftp_resources_yaml = f'resources/{file_name}'
     full_path_of_ftp_resources_yaml_file = os.path.join(base_path, sub_path_of_ftp_resources_yaml)
     return full_path_of_ftp_resources_yaml_file
+

@@ -11,5 +11,7 @@ bin/
 doc/
 include/
 downloaded/
+downloaded_from_s3/
 *dummy*
 ./resources/ftp_resources.yaml
+./resources/aws_resources_prod.yaml
