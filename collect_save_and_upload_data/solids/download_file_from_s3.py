@@ -40,3 +40,4 @@ def download_file_from_s3(context, s3_key):
         context.log.info(f'FAIL: File {s3_key} download fail')
     finally:
         context.log.info(f'OK: File {s3_key} downloaded successfully')
+        return s3_key
