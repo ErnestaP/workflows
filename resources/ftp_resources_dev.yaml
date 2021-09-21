@@ -1,6 +1,7 @@
 resources:
-  ftp:
-    config:
-      ftp_host : "ftp.us.debian.org"
-      ftp_user: "anonymous"
-      ftp_pass: "anonymous@"
+    ftp:
+      config:
+        ftp_host : ""
+        ftp_user : ""
+        ftp_pass : ""
+        ftp_folder: ""

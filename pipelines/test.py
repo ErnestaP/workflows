@@ -9,9 +9,9 @@ from collect_save_and_upload_data.solids.crawler_parser import crawler_parser
 from steps.composite_solids.run_all_steps import run_all_steps
 
 path_of_ftp_resources_yaml = get_ftp_resources_yaml_path('ftp_resources.yaml')
-path_of_ftp_resources_test_yaml = get_ftp_resources_yaml_path('ftp_resources_dev.yaml')
+path_of_ftp_resources_dev_yaml = get_ftp_resources_yaml_path('ftp_resources_dev.yaml')
 path_of_aws_resources_yaml = get_ftp_resources_yaml_path('aws_resources_dev.yaml')
-path_of_aws_resources_test_yaml = get_ftp_resources_yaml_path('aws_resources_prod.yaml')
+path_of_aws_resources_dev_yaml = get_ftp_resources_yaml_path('aws_resources_prod.yaml')
 
 
 @pipeline(
@@ -37,8 +37,8 @@ path_of_aws_resources_test_yaml = get_ftp_resources_yaml_path('aws_resources_pro
         PresetDefinition.from_files(
             "dev",
             config_files=[
-                path_of_ftp_resources_test_yaml,
-                path_of_aws_resources_test_yaml
+                path_of_ftp_resources_dev_yaml,
+                path_of_aws_resources_dev_yaml
             ],
             mode="dev",
         ),
@@ -59,6 +59,10 @@ def test():
 
 if __name__ == "__main__":
     # start_presets_main
-    result = execute_pipeline(test, preset="dev")
-    # end_presets_main
+    result = execute_pipeline(test, preset="prod")
+
+    # solids can be run partly, the lone below shows how to run composite_solid and it's ancestors.
+    # Note: solids has to be used in pipeline directly. For example, if we will put just collect_files_to_download
+    # we will get an error: No qualified solids to execute found for solid_selection=['*collect_files_to_download']
+    # result = execute_pipeline(test, solid_selection=["*get_files_from_ftp_and_save_to_s3"], preset="prod")
     assert result.success

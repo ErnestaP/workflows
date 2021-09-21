@@ -37,10 +37,10 @@ def uploading_files_to_s3(context):
         path_to_file = os.path.join(pwd, f'downloaded/{file_name}')
         key = f"{DUMMY_FILES_SUB_KEY}/{file_name}"
 
-        # s3_resource.Bucket(bucket_name).put_object(
-        #     Key=key,
-        #     Body=open(path_to_file, 'rb')
-        # )
+        s3_resource.Bucket(bucket_name).put_object(
+            Key=key,
+            Body=open(path_to_file, 'rb')
+        )
     # return keys of files, where they were uploaded.
     # Because after this step we will use just Keys of s3 to re-download files to modify them
     for key in s3_client.list_objects(Bucket=bucket_name)['Contents']:

@@ -35,6 +35,7 @@ def download_file_from_s3(context, s3_key):
     file_name = os.path.basename(s3_key)
     target_path = os.path.join(local_dir, file_name)
     try:
+        context.log.info('Nothing')
         s3_client.download_file(bucket_name, s3_key, target_path)
     except ValueError:
         context.log.info(f'FAIL: File {s3_key} download fail')
